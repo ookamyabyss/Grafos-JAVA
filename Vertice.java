@@ -1,39 +1,34 @@
+// Uneb. Universidade do Estado da Bahia
+// Aluno. Rafael Roberto Coutinho da Cruz
+
 import java.util.ArrayList;
 
-public class Vertice<TIPO> {
-    private TIPO dado;
-    private ArrayList<Aresta<TIPO>> arestasEntrada;
-    private ArrayList<Aresta<TIPO>> arestasSaida;
+public class Vertice {
+
+    // declaration
+    private int valor;
+    private ArrayList<Aresta> arestas;
     
-    public Vertice(TIPO valor){
-        this.dado = valor;
-        this.arestasEntrada = new ArrayList<Aresta<TIPO>>();
-        this.arestasSaida = new ArrayList<Aresta<TIPO>>();
+    // constructor method
+    public Vertice(int valor) {
+        this.valor = valor;
+        this.arestas = new ArrayList<Aresta>();
+    }
+    // getValor
+    public int getValor() {
+        return valor;
+    }
+    // getArestas
+    public ArrayList<Aresta> getArestas() {
+        return this.arestas;
+    }
+    // setValor
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+    // setAresta - adicionar Aresta
+    public void addAresta(Aresta a) {
+        this.arestas.add(a);
     }
 
-    public TIPO getDado() {
-        return dado;
-    }
-
-    public void setDado(TIPO dado) {
-        this.dado = dado;
-    }
-    
-    public void adicionarArestaEntrada(Aresta<TIPO> aresta){
-        this.arestasEntrada.add(aresta);
-    }
-    
-    public void adicionarArestaSaida(Aresta<TIPO> aresta){
-        this.arestasSaida.add(aresta);
-    }
-
-    public ArrayList<Aresta<TIPO>> getArestasEntrada() {
-        return arestasEntrada;
-    }
-
-    public ArrayList<Aresta<TIPO>> getArestasSaida() {
-        return arestasSaida;
-    }
-    
-    
 }
