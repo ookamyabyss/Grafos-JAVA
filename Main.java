@@ -1,3 +1,4 @@
+
 // Uneb. Universidade do Estado da Bahia
 // Aluno. Rafael Roberto Coutinho da Cruz
 
@@ -24,24 +25,27 @@ public class Main {
         g.addAresta(a2);
         g.addAresta(a3);
         g.addAresta(a4);
-
+                
         // MOSTRAR VERTICES E ARESTAS NO GRAFO
-        g.printVertices();
-        g.printConections();
-        // PrintMatriz
-        g.printMatriz();
+        //g.printVertices();
+        //g.printConections();
+        
+        // Matriz Adjacencia
+        //g.matrizAdjacencia();
 
         // DELETAR VERTICE
         // System.out.println("deletando vertice:");
-        // g.deleteVertice(1);
+        //g.deleteVertice(1);
         // g.printVertices();
         // g.printConections();
- 
+        
+      
         // DELETAR ARESTA
         // System.out.println("deletando aresta:");
-        // g.deleteAresta(2, 1);
+        // g.deleteAresta(1, 2);
         // g.printVertices();
         // g.printConections();
+        
 
         // GRAU DO VERTICE
         // System.out.println(g.grauVertice(1));
