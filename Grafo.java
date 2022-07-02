@@ -7,7 +7,8 @@ public class Grafo {
     
     // declaration
     private ArrayList<Vertice> vertices;
-    private ArrayList<Aresta> arestas;    
+    private ArrayList<Aresta> arestas;
+
  
     public Grafo(Vertice vertice) {
         this.vertices = new ArrayList<Vertice>();
@@ -17,7 +18,7 @@ public class Grafo {
     
     public Grafo() {
         this.vertices = new ArrayList<Vertice>();
-        this.arestas = new ArrayList<Aresta>();        
+        this.arestas = new ArrayList<Aresta>();
     }
     
     // Adicionar Vertice
@@ -130,14 +131,18 @@ public class Grafo {
         return vertice.getArestas().size();
     }
     
-    public boolean checkConexo() {
+    public boolean checkConexo(boolean showPrint) {
         for (Vertice vertice : this.vertices) {
             if (vertice.getArestas().size() < 1) {
-                System.out.println("Grafo não Conexo, vertice de valor " + vertice.getValor() + " sem conexão");
+                if (showPrint) {
+                    System.out.println("Grafo não Conexo, vertice de valor " + vertice.getValor() + " sem conexão");
+                }
                 return false;
             }
         }
-        System.out.println("Grafo Conexo, todos os vertices tem ao menos uma conexão");
+        if (showPrint) {
+            System.out.println("Grafo Conexo, todos os vertices tem ao menos uma conexão");
+        }
         return true;
     }
     
@@ -168,4 +173,26 @@ public class Grafo {
         System.out.println();  
         }
     }
+
+    // Caminho de Euler  
+    public void caminhodeEuler() {
+      int countImpares = 0;
+      
+      boolean conexo = this.checkConexo(false);
+      
+      for (Vertice vertice : this.vertices) {
+            int grauV= this.grauVertice(vertice);
+
+            if (grauV % 2 != 0) {
+              countImpares += 1;
+            } 
+      }
+        
+      if(countImpares == 2 && conexo || countImpares == 0 && conexo){
+         System.out.print("Existe um caminho de Euler"); 
+      } else 
+        System.out.print("Não existe um caminho de Euler");      
+       
+    } 
+  
 }
