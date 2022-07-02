@@ -118,6 +118,7 @@ public class Grafo {
         System.out.println("GRAU MÍNIMO: " + grauMin);
         System.out.println("GRAU MÉDIO: " + grauMed);
         System.out.println("GRAU MÁXIMO: " + grauMax);
+        System.out.println("\n");
     }
     
     private Integer grauVertice(Vertice vertice) {
@@ -172,6 +173,7 @@ public class Grafo {
           }
         System.out.println();  
         }
+      System.out.println("\n");
     }
 
     // Caminho de Euler  
@@ -192,7 +194,7 @@ public class Grafo {
          System.out.print("Existe um caminho de Euler"); 
       } else 
         System.out.print("Não existe um caminho de Euler");      
-       
+     System.out.println("\n");   
     } 
   
 }
