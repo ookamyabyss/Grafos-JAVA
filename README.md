@@ -5,7 +5,7 @@ UNEB - Universidade do Estado da Bahia
 
 Aluno. Rafael Roberto Coutinho da Cruz
 
-☕ Implementar um TAD (Tipo Absrato de Dados), onde contemple funcionalidades espercíficas de um grafo.
+Implementar um TAD (Tipo Absrato de Dados), onde contemple funcionalidades espercíficas de um grafo.
 
   Inclusão de um grafo com seus vértices e arestas.
 
@@ -13,7 +13,7 @@ Aluno. Rafael Roberto Coutinho da Cruz
 
   Permita a inserção e a remoção de vértices.
 
-  Permita a inderção e a remoção de uma aresta entre 2 vértices.
+  Permita a inserção e a remoção de uma aresta entre 2 vértices.
 
   Obtenha os vértices adjacentes a um determinado vértice.
 
