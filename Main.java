@@ -8,15 +8,17 @@ public class Main {
 
     public static void main(String[] args) {
         Grafo g = new Grafo();
-      
+
         Vertice v1 = new Vertice(1);
         Vertice v2 = new Vertice(2);
         Vertice v3 = new Vertice(3);
         Vertice v4 = new Vertice(4);
+        
         Aresta a1 = new Aresta(v1, v2);
         Aresta a2 = new Aresta(v1, v3);
         Aresta a4 = new Aresta(v1, v4);
         Aresta a3 = new Aresta(v2, v3);
+        Aresta a5 = new Aresta(v3, v2);
         
         // ADICIONAR VERTICES 
         g.addVertice(v1);
@@ -28,10 +30,11 @@ public class Main {
         g.addAresta(a2);
         g.addAresta(a3);
         g.addAresta(a4);
+        g.addAresta(a5);
       
         Scanner input = new Scanner(System.in);
         boolean Menu = true;
-        int valor = 0;
+        int valor = 0, vInicio = 0, vFinal = 0;
       
         while (Menu) {
           System.out.println("0 - Sair do programa");
@@ -45,6 +48,7 @@ public class Main {
           System.out.println("8 - Adjacencias Vertice ");
           System.out.println("9 - Deleta Vertice ");
           System.out.println("10 - Deleta Aresta ");
+          System.out.println("11 - Search Aresta ");
 
           System.out.print("Escolha uma opção : ");
           int option = input.nextInt();
@@ -77,27 +81,34 @@ public class Main {
             break;
             case 7: 
               System.out.print("DIGITE O VERTICE PARA VÊ O GRAU ");
-              valor = input.nextInt();
+                valor = input.nextInt();
               System.out.println("GRAU DO VERTICE: "+g.grauVertice(valor)); // GRAU DO VERTICE
               System.out.println("\n");
             break;
             case 8:
               System.out.print("DIGITE O VERTICE PARA VÊ AS ADJACENCIAS ");
-              valor = input.nextInt();
+                valor = input.nextInt();
               g.adjacencias(valor);
             break;
             case 9:
               System.out.println("Deletando Vertice:");
-              valor = input.nextInt();
+                valor = input.nextInt();
               g.deleteVertice(valor); // DELETAR VERTICE
             break;
             case 10:
-            System.out.println("Deletando Aresta:");
-            System.out.print("DIGITE O VERTICE INICIAL: ");
-            int vInicio = input.nextInt();
-            System.out.print("DIGITE O VERTICE FINAL: ");
-            int vFinal = input.nextInt();
-            g.deleteAresta(vInicio, vFinal); // DELETAR ARESTA
+              System.out.println("Deletando Aresta:");
+              System.out.print("DIGITE O VERTICE INICIAL: ");
+                vInicio = input.nextInt();
+              System.out.print("DIGITE O VERTICE FINAL: ");
+                vFinal = input.nextInt();
+              g.deleteAresta(vInicio, vFinal); // DELETAR ARESTA
+            break;
+            case 11:
+              System.out.print("DIGITE O VERTICE INICIAL: ");
+                vInicio = input.nextInt();
+              System.out.print("DIGITE O VERTICE FINAL: ");
+                vFinal = input.nextInt();
+              g.testConnection(vInicio, vFinal);
             break;
             default:
               Menu = false;
