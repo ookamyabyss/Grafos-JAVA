@@ -12,25 +12,25 @@ public class Main {
         Vertice v1 = new Vertice(1);
         Vertice v2 = new Vertice(2);
         Vertice v3 = new Vertice(3);
-        Vertice v4 = new Vertice(4);
+        //Vertice v4 = new Vertice(4);
         
         Aresta a1 = new Aresta(v1, v2);
         Aresta a2 = new Aresta(v1, v3);
-        Aresta a4 = new Aresta(v1, v4);
         Aresta a3 = new Aresta(v2, v3);
-        Aresta a5 = new Aresta(v3, v2);
+        //Aresta a4 = new Aresta(v2, v3);
+        //Aresta a5 = new Aresta(v3, v2);
         
         // ADICIONAR VERTICES 
         g.addVertice(v1);
         g.addVertice(v2);
         g.addVertice(v3);
-        g.addVertice(v4);
+        //g.addVertice(v4);
         // ADICIONAR ARESTAS ENTRE DOIS VERTICES
         g.addAresta(a1);
         g.addAresta(a2);
         g.addAresta(a3);
-        g.addAresta(a4);
-        g.addAresta(a5);
+        //g.addAresta(a4);
+        //g.addAresta(a5);
       
         Scanner input = new Scanner(System.in);
         boolean Menu = true;
@@ -70,11 +70,11 @@ public class Main {
             break;
             case 5:
               boolean conexo = g.checkConexo(false); // CHECAR GRAFO CONEXO
-              if(conexo)
-                System.out.print("GRAFO CONEXO"); 
-              else 
-                System.out.print("GRAFO NÃO CONEXO");
-              System.out.println("\n");
+              if(conexo == true ){
+                System.out.print("CONEXO");  
+              } else {
+                System.out.print("NÃO CONEXO");  
+              }
             break;
             case 6:
               g.caminhodeEuler(); /// CAMINHO DE EULER
