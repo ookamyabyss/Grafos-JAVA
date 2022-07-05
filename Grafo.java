@@ -1,6 +1,7 @@
 // Uneb. Universidade do Estado da Bahia
 // Aluno. Rafael Roberto Coutinho da Cruz
 
+
 import java.util.ArrayList;
 
 public class Grafo {
@@ -29,7 +30,7 @@ public class Grafo {
     // ADD ARESTA
     public void addAresta(Aresta a) {
         this.arestas.add(a);
-        
+ 
         a.getInicio().addAresta(a);
         a.getFinal().addAresta(a);
         System.out.println("Aresta Adicionada");       
@@ -79,23 +80,17 @@ public class Grafo {
     }
   
     public void testConnection(int v1, int v2) {
+ 
       this.arestas.forEach((aresta) -> {
-            boolean testInicio = (aresta.getInicio().getValor() == v1
-                    || aresta.getInicio().getValor() == v2);
-
-            boolean testFim = (aresta.getFinal().getValor() == v1
-                    || aresta.getFinal().getValor() == v2);
-
-            if (testInicio && testFim) {
-                System.out.println("Aresta encontrada: ");
-                System.out.println(
-                        "[" + aresta.getInicio().getValor() + " -> "
-                                + aresta.getFinal().getValor() + "]");
-            }
-        });
-      
-      
-
+        boolean testInicio = (aresta.getInicio().getValor() == v1
+                      || aresta.getInicio().getValor() == v2);
+         boolean testFim = (aresta.getFinal().getValor() == v1
+                      || aresta.getFinal().getValor() == v2);
+        if (testInicio && testFim) {
+          System.out.println("Aresta encontrada: ");
+          System.out.println("[" + aresta.getInicio().getValor() + " -> " + aresta.getFinal().getValor() + "]");
+        } 
+      });     
     }
     
     // DIZ GRAU MINIMO, MEDIO, MAXIMO 
@@ -138,18 +133,37 @@ public class Grafo {
 
     // DIZ SE O GRAFO E CONEXO OU NÃO
     public boolean checkConexo(boolean showPrint) {
-        for (Vertice vertice : this.vertices) {
-            if (vertice.getArestas().size() < 1) {
-                if (showPrint) {
-                    System.out.println("Grafo não Conexo, vertice de valor " + vertice.getValor() + " sem conexão");
-                }
-                return false;
-            }
+      // preenchendo matriz 
+      int [][] matrizConexo = new int[vertices.size()][vertices.size()];    
+      this.arestas.forEach((aresta) -> {
+          matrizConexo[aresta.getInicio().getValor() - 1][aresta.getFinal().getValor() - 1] = 1;
+          matrizConexo[aresta.getFinal().getValor() - 1][aresta.getInicio().getValor() - 1] = 1;   
+        });
+      
+      
+      // COLOCA NUMERO 2 NA DIAGONAL
+      for(int i = 0; i < matrizConexo.length; i++){ 
+          for(int j = 0; j < matrizConexo[i].length; j++){
+            matrizConexo[i][i] = 2;
+          }   
+      }
+
+      
+      // PECORRE A MATRIZ SE ALGUM INDICE TIVE 0 ENTÃO NÃO CONEXO
+      for(int i = 0; i < matrizConexo.length; i++){
+        if(matrizConexo[i][i] == 0){
+          return false;      
         }
-        if (showPrint) {
-            System.out.println("Grafo Conexo, todos os vertices tem ao menos uma conexão");
+
+        for(int j = 0; j < matrizConexo[i].length; j++){
+          if(matrizConexo[i][j] == 0){
+            return false;      
+          }
         }
-        return true;
+            
+      }
+    return true;   
+    
     }
 
     // DIZ A ARESTAS INTERLIGADAS A UM VERTICE
